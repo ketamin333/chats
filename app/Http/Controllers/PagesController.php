@@ -8,6 +8,6 @@ class PagesController extends Controller
 {
     public function chats(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        return view('pages.chats');
+        return view('Pages.chats');
     }
 }
