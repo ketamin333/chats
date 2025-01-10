@@ -1,32 +1,41 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/components/Pages/App/Home.vue';
-import SidebarMenu from '../views/components/Common/SidebarMenu.vue';
-// import AuthPanel from "./components/home/AuthPanel.vue";
-// import FooterPanel from "./components/home/FooterPanel.vue";
-// import RegisterContainer from "./components/Auth/RegisterContainer.vue";
+import { vuetify } from './vuetify.js';
 
-const routes = [
-    {
-        path: '/', component: Home
-    },
-];
+import { createRouter, createWebHistory } from 'vue-router';
+
+// // import AuthPanel from "./components/home/AuthPanel.vue";
+// // import FooterPanel from "./components/home/FooterPanel.vue";
+// // import RegisterContainer from "./components/Auth/RegisterContainer.vue";
+
+import navbar from '../views/components/Common/MenuNavbar.vue';
+import sidebar from '../views/components/Common/Sidebar.vue';
 
 // Создаем экземпляр роутера с историей
 const router = createRouter({
     history: createWebHistory(),
-    routes,
+    routes: [
+        {
+            path: '/',
+            component: () => import('../views/components/Pages/App/Home.vue'),
+            meta: {title: 'Главная'},
+        },
+    ],
+});
+
+router.beforeEach((to, from) => {
+    document.title = to.meta.title + ' | Chats';
 });
 
 // Создаем экземпляр приложения Vue
 const app = createApp({
     components: {
-        SidebarMenu,
+        navbar,
+        sidebar,
     },
 });
 
 // Подключаем роутер к приложению
-app.use(router);
+app.use(router).use(vuetify);
 
 // Монтируем приложение
-app.mount('#app');
+app.mount('#chats');

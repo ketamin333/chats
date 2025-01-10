@@ -6,10 +6,6 @@
 {{--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">--}}
 {{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
 
-{{--    <link rel="preconnect" href="https://fonts.googleapis.com">--}}
-{{--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--}}
-{{--    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">--}}
-
 {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">--}}
 
 {{--    <link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
@@ -56,8 +52,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
     <title></title>
 
     @vite('resources/css/app.css')
@@ -65,14 +66,18 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
-<body id="app">
-    <sidebar-menu></sidebar-menu>
-
-{{--    <div class="container text-white">--}}
-{{--        <app-page></app-page>--}}
-
+<body id="chats">
+    <v-app :theme="theme">
+        <v-main class="!p-0 flex flex-row">
+            <navbar></navbar>
+            <v-container fluid class="my-2 rounded-2xl bg-surface-variant">
+                <router-view></router-view>
+            </v-container>
+            <sidebar></sidebar>
+        </v-main>
+    </v-app>
+{{--    <div class="h-full w-full">--}}
+{{--        --}}
 {{--    </div>--}}
-
-    <router-view></router-view>
 </body>
 </html>

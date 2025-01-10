@@ -1,19 +1,19 @@
 * {
     text-decoration: none !important;
-}
 
-@font-face {
     font-family: "Manrope", serif;
-    /*font-weight: <weight>;*/
+    font-optical-sizing: auto;
     font-style: normal;
 }
 
 :root {
-    --app-black: #1C1A1C;
-    --app-black-light: #27272A;
-    --app-black-dark: #1f1f1f;
+    --app-bg: #1C1A1C;
+    --app-border: #27272A;
+    /*--app-black-dark: #1f1f1f;*/
+    /*--app-black-muted: #282628;*/
 
-    --app-grey-light: #BDBDBD;
+    /*--app-text: #BDBDBD;*/
+    /*--app-grey-light: ;*/
     --app-grey-dark: #252526;
     --app-grey: #383838;
     --app-white: #FFFFFF;
@@ -21,14 +21,6 @@
     --app-red: #F24646;
     --app-red-pale: #E5383B;
     --app-red-muted: #E98074;
-
-    /*--main-color: #;*/
-    /*--sub-color: #D8C3A5;*/
-    /*--grey-color: #8E8D8A;*/
-    /*--red-color: #E85A4F;*/
-
-    --fs-lg: .875rem;
-    --fs-sm: .7rem;
 }
 
 ::-webkit-scrollbar {
@@ -54,43 +46,17 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(at center, var(--app-red), var(--app-black));
-    display: flex;
+    /*background: radial-gradient(at center, var(--app-red), var(--app-bg));*/
 }
 
-/*.app-header {*/
-/*    position: sticky;*/
-/*    top: 0;*/
-/*    background-color: var(--app-black);*/
-/*    backdrop-filter: blur(50px);*/
-/*    !*opacity: .9;*!*/
-/*    border-bottom: 1px solid var(--app-black-light);*/
-/*}*/
-
-/*.bg-app-black {*/
-/*    background-color: var(--app-black);*/
-/*}*/
-
-/*.text-app-grey {*/
+/*.text-app-grey-light {*/
 /*    transition: .1s ease;*/
-/*    color: var(--app-grey-light);*/
+/*    color: var(--app-text) !important;*/
 /*}*/
 
-/*.text-app-grey-hover:hover {*/
-/*    color: var(--app-white);*/
-/*}*/
-
-/*.fs-lg {*/
-/*    font-size: var(--fs-lg);*/
-/*}*/
-
-/*.fs-sm {*/
-/*    font-size: var(--fs-sm);*/
-/*}*/
-
-/*.cursor-pointer {*/
-/*    cursor: pointer;*/
-/*}*/
+.cursor-pointer {
+    cursor: pointer;
+}
 
 /*.btn-app {*/
 /*    !*font-size: var(--fs-lg);*!*/
@@ -120,8 +86,8 @@ body {
 /*}*/
 
 /*.app-block {*/
-/*    background-color: var(--app-black);*/
-/*    border-bottom: 1px solid var(--app-black-light);*/
+/*    background-color: var(--app-bg);*/
+/*    border-bottom: 1px solid var(--app-border);*/
 /*}*/
 
 /*.app-block-chat {*/
