@@ -11,18 +11,15 @@
 </script>
 
 <template>
-    <v-navigation-drawer floating permanent class="p-4 position-relative" :width="72" location="right">
+    <v-navigation-drawer floating class="p-4" :width="72" location="right">
         <div class="flex flex-col gap-y-5">
             <router-link to="/me">
                 <v-avatar size="40" class="border">
-                    <v-img
-                        alt="user"
-                        src="https://shapka-youtube.ru/wp-content/uploads/2024/08/neonovaya-avatarka-krolika.jpg"></v-img>
+                    <v-img alt="user" src="https://shapka-youtube.ru/wp-content/uploads/2024/08/neonovaya-avatarka-krolika.jpg"></v-img>
                     <v-tooltip
                         content-class="border bg-surface shadow-lg text-caption text-surface-light"
                         activator="parent"
-                        location="start"
-                    >Профиль</v-tooltip>
+                        location="start">Профиль</v-tooltip>
                 </v-avatar>
             </router-link>
             <div class="flex flex-col gap-y-3">

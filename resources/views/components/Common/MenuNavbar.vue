@@ -1,23 +1,31 @@
-<script>
-export default {
-    data() {
-        return {
-            isExpanded: false,
-        };
-    },
-    methods: {},
-};
+<script setup>
+    const items = [
+        {
+            title: 'Домой',
+            icon: 'bi-house',
+            link: '/chats',
+        },
+    ];
 </script>
 
 <template>
-    <v-navigation-drawer floating permanent class="p-4 position-relative" :width="240">
-        <div class="flex flex-col gap-y-1">
-            <router-link to="/" v-slot="{ isActive }">
-                <v-btn block prepend-icon="bi-house" variant="text" class="text-none justify-start" :class="isActive && 'v-btn--active text-surface-light'">
-                    Домой
-                </v-btn>
+    <v-navigation-drawer floating class="p-4" :width="240">
+        <v-list lines="one" class="!p-0">
+            <router-link
+                v-for="item in items"
+                v-slot="{ isActive }"
+                :to="item.link">
+                <v-list-item
+                    :active="isActive"
+                    rounded="lg" class="!p-3"
+                    color="surface-light">
+                    <v-list-item-title class="flex gap-x-2">
+                        <v-icon :icon="item.icon"></v-icon>
+                        <span v-text="item.title"></span>
+                    </v-list-item-title>
+                </v-list-item>
             </router-link>
-        </div>
+        </v-list>
     </v-navigation-drawer>
 </template>
 

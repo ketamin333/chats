@@ -9,11 +9,11 @@
 :root {
     --app-bg: #1C1A1C;
     --app-border: #27272A;
-    /*--app-black-dark: #1f1f1f;*/
-    /*--app-black-muted: #282628;*/
+    --app-black-dark: #1f1f1f;
+    --app-black-muted: #282628;
 
-    /*--app-text: #BDBDBD;*/
-    /*--app-grey-light: ;*/
+    --app-text: #BDBDBD;
+    --app-grey-light: ;
     --app-grey-dark: #252526;
     --app-grey: #383838;
     --app-white: #FFFFFF;
@@ -29,141 +29,20 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: var(--app-grey-dark);
+    background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #383838;
+    background: rgba(var(--v-theme-on-surface), .25);
     border-radius: 1rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #48484a;
+    background: rgba(var(--v-theme-on-surface), .5)
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    /*background: radial-gradient(at center, var(--app-red), var(--app-bg));*/
+.v-ripple__container {
+    display:none !important;
 }
-
-/*.text-app-grey-light {*/
-/*    transition: .1s ease;*/
-/*    color: var(--app-text) !important;*/
-/*}*/
-
-.cursor-pointer {
-    cursor: pointer;
-}
-
-/*.btn-app {*/
-/*    !*font-size: var(--fs-lg);*!*/
-/*    padding: .5rem 1rem;*/
-/*    border-radius: .15rem;*/
-/*    transition: .1s ease;*/
-/*    border: none;*/
-/*    font-size: 1rem;*/
-/*}*/
-
-/*.btn-app-grey {*/
-/*    background-color: var(--app-grey);*/
-/*}*/
-
-/*.btn-app-red {*/
-/*    background-color: var(--app-red);*/
-/*}*/
-
-/*.btn-app-red:hover {*/
-/*    background-color: var(--app-red-pale);*/
-/*    !*border: .5rem solid var(--app-red);*!*/
-/*}*/
-
-/*.btn-app-red:focus,*/
-/*.btn-app-red:active {*/
-/*    box-shadow: 0 0 0 .15rem var(--app-red-muted);*/
-/*}*/
-
-/*.app-block {*/
-/*    background-color: var(--app-bg);*/
-/*    border-bottom: 1px solid var(--app-border);*/
-/*}*/
-
-/*.app-block-chat {*/
-/*    height: 40rem;*/
-/*    background-color: var(--app-grey-dark);*/
-/*    border-radius: .5rem;*/
-/*    padding: 1rem;*/
-/*    display: flex;*/
-/*    flex-direction: column-reverse;*/
-/*    overflow-y: auto;*/
-/*    row-gap: .5rem;*/
-/*}*/
-
-/*.form-message {*/
-/*    background-color: transparent;*/
-/*    border: none;*/
-/*    resize: none;*/
-/*    width: 100%;*/
-/*    color: var(--app-grey-light);*/
-/*    font-size: var(--fs-lg);*/
-/*    height: fit-content;*/
-/*    outline: none;*/
-/*    overflow-y: hidden;*/
-/*}*/
-
-/*.form-message:focus {*/
-/*    outline: none;*/
-/*    border: none;*/
-/*}*/
-
-/*.form-message::selection {*/
-/*    color: var(--app-white);*/
-/*    background-color: var(--app-red);*/
-/*}*/
-
-/*.app-container-message-date {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.app-block-message-date {*/
-/*    width: max-content;*/
-/*    background-color: var(--app-grey);*/
-/*    border-radius: 1rem;*/
-/*    padding: .25rem 1rem;*/
-/*    font-size: var(--fs-sm);*/
-/*}*/
-
-/*.app-container-message {*/
-/*    display: flex;*/
-/*}*/
-
-/*.app-container-message-outgoing {*/
-/*    justify-content: end;*/
-/*}*/
-
-/*.app-container-message-incoming {*/
-/*    justify-content: start;*/
-/*}*/
-
-/*.app-container-message-outgoing .app-block-message {*/
-/*    background-color: #383838;*/
-/*}*/
-
-/*.app-container-message-incoming .app-block-message {*/
-/*    background-color: #48484a;*/
-/*}*/
-
-/*.app-block-message {*/
-/*    display: flex;*/
-/*    width: max-content;*/
-/*    max-width: 65%;*/
-/*    padding: .75rem;*/
-/*    border-radius: .5rem;*/
-/*    flex-direction: column;*/
-/*}*/
-
-

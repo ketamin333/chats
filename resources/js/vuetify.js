@@ -10,8 +10,11 @@ const chatsDarkTheme = {
         surface: '#121212',
         'on-surface': '#BDBDBD',
         'surface-variant': '#000000',
+        'on-surface-variant': '#AAAAAA',
         'border-color': '#27272A',
-        'surface-light': '#FFFFFF'
+        'surface-bright': '#252526',
+        'surface-light': '#FFFFFF',
+        primary: '#F24646',
     }
 }
 
@@ -22,8 +25,11 @@ const chatsLightTheme = {
         surface: '#FFFFFF',
         'on-surface': '#000000',
         'surface-variant': '#E9ECEF',
+        'on-surface-variant': '#AAAAAA',
         'border-color': '#EAEAEA',
-        'surface-light': '#000000'
+        'surface-light': '#000000',
+        primary: '#8674E1',
+
     }
 }
 
@@ -32,9 +38,12 @@ export const vuetify= createVuetify({
     directives,
     theme: {
         defaultTheme: 'chatsDarkTheme',
+        options: {customProperties: true,},
         themes: {
             chatsDarkTheme,
             chatsLightTheme
         },
     },
+    VRipple: false,
+
 });
