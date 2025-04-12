@@ -4,6 +4,21 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
+            path: '/login',
+            component: () => import('../views/components/Pages/Guest/Login.vue'),
+            meta: {
+                title: 'Авторизация'
+            },
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound',
+            component: () => import('../views/components/Common/NotFound.vue'),
+            meta: {
+                title: 'Страница не сущестует'
+            },
+        },
+        {
             path: '/chats',
             name: 'page',
             component: () => import('../views/components/Pages/App/Home.vue'),
@@ -19,10 +34,6 @@ const router = createRouter({
                 }
             ],
         },
-        {
-            path: '/test',
-            component: ()=> import('../views/components/Pages/App/Test.vue')
-        }
     ],
 });
 

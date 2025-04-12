@@ -20,19 +20,12 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body id="chats">
-    <v-app>
-        <app></app>
-    </v-app>
-{{--        <navbar></navbar>--}}
-
-
-
-{{--        <sidebar></sidebar>--}}
-{{--        <v-main class="py-2 overflow-y-auto h-screen bg-surface">--}}
-{{--            <v-container class="rounded-2xl h-full !p-6 bg-background">--}}
-{{--                <router-view></router-view>--}}
-{{--            </v-container>--}}
-{{--        </v-main>--}}
-{{----}}
+<v-app>
+    <v-main class="h-screen bg-guest">
+        <v-container class="h-full">
+            <router-view></router-view>
+        </v-container>
+    </v-main>
+</v-app>
 </body>
 </html>

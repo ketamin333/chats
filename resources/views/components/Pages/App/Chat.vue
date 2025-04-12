@@ -1,263 +1,164 @@
 <script>
+import axios from "axios";
 
 export default {
     data: () => ({
-        messages: {
-            '2025-01-12': [
-                {
-                    type: 'outgoing',
-                    messages: [
-                        {
-                            text: 'word-break: break-word; \n' +
-                                'white-space: pre-wrap;\n' +
-                                'word-break: break-word; \n' +
-                                'white-space: pre-wrap;',
-                            time: '13:12',
-                            messageId: 1
-                        },
-                        {
-                            text: 'Oh yeah',
-                            time: '21:11',
-                            messageId: 2
-                        },
-                    ]
-                },
-                {
-                    type: 'incoming',
-                    messages: [
-                        {
-                            text: 'Its the best part.',
-                            time: '14:21',
-                            messageId: 3
-                        },
-                        {
-                            text: 'Its crunchy, its explosive!',
-                            time: '15:43',
-                            messageId: 4
-                        }
-                    ]
-                }
-            ],
-            '2025-01-11': [
-                {
-                    type: 'outgoing',
-                    messages: [
-                        {
-                            text: 'word-break: break-word; \n' +
-                                'white-space: pre-wrap;\n' +
-                                'word-break: break-word; \n' +
-                                'white-space: pre-wrap;',
-                            time: '13:12',
-                            messageId: 5
-                        },
-                        {
-                            text: 'Oh yeah',
-                            time: '21:11',
-                            messageId: 6
-                        },
-                    ]
-                },
-                {
-                    type: 'incoming',
-                    messages: [
-                        {
-                            text: 'Its the best part.',
-                            time: '14:21',
-                            messageId: 7
-                        },
-                        {
-                            text: 'Its crunchy, its explosive!',
-                            time: '15:43',
-                            messageId: 8
-                        }
-                    ]
-                }
-            ],
-            '2025-01-09': [
-                {
-                    type: 'outgoing',
-                    messages: [
-                        {
-                            text: 'word-break: break-word; \n' +
-                                'white-space: pre-wrap;\n' +
-                                'word-break: break-word; \n' +
-                                'white-space: pre-wrap;',
-                            time: '13:12',
-                            messageId: 9
-                        },
-                        {
-                            text: 'Oh yeah',
-                            time: '21:11',
-                            messageId: 10
-                        },
-                    ]
-                },
-                {
-                    type: 'incoming',
-                    messages: [
-                        {
-                            text: 'Its the best part.',
-                            time: '14:21',
-                            messageId: 11
-                        },
-                        {
-                            text: 'Its crunchy, its explosive!',
-                            time: '15:43',
-                            messageId: 12
-                        }
-                    ]
-                }
-            ],
-        },
-        client: {
-            avatar: 'https://img.freepik.com/free-photo/cute-ai-generated-cartoon-bunny_23-2150288874.jpg',
-            title: 'Катя',
-            subtitle: 'whatsapp',
-            pins: [3, 6]
-        },
-        selectedMessages: {
-            show: false,
-            messages: []
-        },
-        showMenu: false,
-        x: 0,
-        y: 0,
-        contextMenuElements: [
-            {
-                title: 'Изменить',
-                icon: 'bi-pencil-fill',
-                color: 'default'
-            },
-            {
-                title: 'Скопировать',
-                icon: 'bi-copy',
-                color: 'default'
-            },
-            {
-                title: 'Выбрать',
-                icon: 'bi-check-circle',
-                color: 'default'
-            },
-            {
-                title: 'Закрепить',
-                icon: 'bi-pin',
-                color: 'default'
-            },
-            {
-                title: 'Удалить',
-                icon: 'bi-trash3',
-                color: 'primary'
-            },
-        ],
+        client: null,
+        // showMenu: false,
+        // x: 0,
+        // y: 0,
+        // contextMenuElements: [
+        //     {
+        //         title: 'Изменить',
+        //         icon: 'bi-pencil-fill',
+        //         color: 'default'
+        //     },
+        //     {
+        //         title: 'Скопировать',
+        //         icon: 'bi-copy',
+        //         color: 'default'
+        //     },
+        //     {
+        //         title: 'Выбрать',
+        //         icon: 'bi-check-circle',
+        //         color: 'default'
+        //     },
+        //     {
+        //         title: 'Закрепить',
+        //         icon: 'bi-pin',
+        //         color: 'default'
+        //     },
+        //     {
+        //         title: 'Удалить',
+        //         icon: 'bi-trash3',
+        //         color: 'primary'
+        //     },
+        // ],
     }),
-    methods: {
-        messageDate(date) {
-            return new Date(date).toLocaleString('ru', {
-                day: 'numeric',
-                month: 'long',
-            })
-        },
-        show (e) {
-            e.preventDefault()
-            this.showMenu = false
-            this.x = e.clientX
-            this.y = e.clientY
-            this.$nextTick(() => {
-                this.showMenu = true
-            });
-        },
-    }
+    mounted() {
+        axios
+            .get(`/api/app/messages/${this.$route.params.chatId}`)
+            .then(response => (this.client = response.data))
+    },
+    // methods: {
+    //     messageDate(date) {
+    //         return new Date(date).toLocaleString('ru', {
+    //             day: 'numeric',
+    //             month: 'long',
+    //         })
+    //     },
+    //     show (e) {
+    //         e.preventDefault()
+    //         this.showMenu = false
+    //         this.x = e.clientX
+    //         this.y = e.clientY
+    //         this.$nextTick(() => {
+    //             this.showMenu = true
+    //         });
+    //     },
+    // },
 }
-
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-const chatId = computed(() => route.params.chatId);
 </script>
 
 <template>
-    <div class="bg-surface">
-        <v-list-item
-            :prepend-avatar="client.avatar"
-            rounded="lg" class="!p-3">
+    <v-list-item
+        :prepend-avatar="client.client.avatar"
+        rounded="lg" class="!p-3">
 
-            <v-list-item-title class="flex justify-between align-center">
-                <div class="font-bold truncate text-base" v-text="client.title"></div>
-            </v-list-item-title>
-            <v-list-item-subtitle v-text="client.subtitle" class="text-sm"></v-list-item-subtitle>
+        <v-list-item-title class="flex justify-between align-center">
+            <div class="font-bold truncate text-base" v-text="client.client.client_name"></div>
+        </v-list-item-title>
+        <!--        <v-list-item-subtitle v-text="client.client.subtitle" class="text-sm">asd</v-list-item-subtitle>-->
 
-            <template v-slot:append>
-                <div class="flex gap-x-2">
-                    <v-btn icon="bi-three-dots-vertical" variant="text" size="small" title="Еще"></v-btn>
-                </div>
-            </template>
-        </v-list-item>
-    </div>
-
-    <v-container class="h-full overflow-y-auto flex flex-column-reverse gap-y-4">
-        <div v-for="(messagesBubble, date) in messages">
-            <div class="flex justify-center mb-4">
-                <div class="text-sm px-3 bg-surface py-1 rounded-xl" v-text="messageDate(date)"></div>
+        <template v-slot:append>
+            <div class="flex gap-x-2">
+                <v-btn icon="bi-three-dots-vertical" variant="text" size="small" title="Еще"></v-btn>
             </div>
-            <div class="flex flex-col gap-y-2">
-                <div v-for="bubble in messagesBubble">
-                    <div class="flex flex-column gap-y-1" :class="bubble.type === 'incoming' ? 'align-start' : 'align-end'">
-                        <div v-for="message in bubble.messages" class="position-relative break-words whitespace-pre-wrap text-sm rounded-lg p-2 max-w-[65%] min-w-4"
-                             :class="bubble.type === 'incoming' ? 'bg-surface' : 'bg-primary'" @contextmenu="show" :key="message.messageId">
-                            {{message.text}}
-                            <div class="time text-xs">
-                                <div v-text="message.time"></div>
-                                <v-icon icon="bi-check-all"></v-icon>
-                                <div class="time-inner">
-                                    <div v-text="message.time"></div>
-                                    <v-icon icon="bi-check-all"></v-icon>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <v-menu
-            v-model="showMenu"
-            absolute offset-y
-            :style="`top: ${y}px; left: ${x}px`"
-            transition="scale-transition">
-            <div class="flex flex-col p-2 bg-surface rounded-lg">
-                <v-btn
-                    v-for="elem in contextMenuElements" class="text-none justify-start gap-x-2"
-                    :prepend-icon="elem.icon" :color="elem.color"
-                    size="small" variant="text" :text="elem.title" :title="elem.title">
-                </v-btn>
-            </div>
-        </v-menu>
-    </v-container>
+        </template>
+    </v-list-item>
 
-    <div class="bg-surface p-2">
-        <div class="flex gap-x-2">
-            <v-btn icon="bi-paperclip" variant="text" size="small" title="Прикрепить файл"></v-btn>
-<!--            <v-textarea-->
-<!--                class="bg-transparent"-->
-<!--                auto-grow-->
-<!--                autofocus-->
-<!--                rows="1"-->
-<!--                placeholder="Сообщение"-->
-<!--                type="textarea" variant="outlined">-->
-<!--            </v-textarea>-->
-            <v-btn icon="bi-emoji-smile" variant="text" size="small" title="Еще"></v-btn>
-            <v-btn icon="bi-send" variant="text" size="small" title="Еще" color="primary"></v-btn>
-        </div>
-    </div>
+
+<!--    <v-container class="h-full overflow-y-auto flex bg-background flex-column-reverse gap-y-4">-->
+<!--        <div v-for="(messagesBubble, date) in client.messages">-->
+<!--            <div class="flex justify-center mb-4">-->
+<!--                <div class="text-sm px-3 py-1 rounded-xl" v-text="messageDate(date)"></div>-->
+<!--            </div>-->
+<!--            <div class="flex flex-col gap-y-2">-->
+<!--                <div v-for="bubble in messagesBubble">-->
+<!--                    <div class="flex flex-column gap-y-1" :class="bubble.type === 'incoming' ? 'align-start' : 'align-end'">-->
+<!--                        <div v-for="message in bubble.messages" class="position-relative break-words whitespace-pre-wrap text-sm shadow-sm rounded-lg p-2 max-w-[65%] min-w-4"-->
+<!--                             :class="bubble.type === 'incoming' ? 'bg-surface-light' : 'bg-primary'" @contextmenu="show" :key="message.messageId">-->
+<!--                            {{message.text}}-->
+<!--                            <div class="time text-xs">-->
+<!--                                <div v-text="message.time"></div>-->
+<!--                                <v-icon icon="bi-check-all"></v-icon>-->
+<!--                                <div class="time-inner">-->
+<!--                                    <div v-text="message.time"></div>-->
+<!--                                    <v-icon icon="bi-check-all"></v-icon>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <v-menu-->
+<!--            v-model="showMenu"-->
+<!--            absolute offset-y-->
+<!--            :style="`top: ${y}px; left: ${x}px`"-->
+<!--            transition="scale-transition">-->
+<!--            <div class="flex flex-col p-2 rounded-lg">-->
+<!--                <v-btn-->
+<!--                    v-for="elem in contextMenuElements" class="text-none justify-start gap-x-2"-->
+<!--                    :prepend-icon="elem.icon" :color="elem.color"-->
+<!--                    size="small" variant="text" :text="elem.title" :title="elem.title">-->
+<!--                </v-btn>-->
+<!--            </div>-->
+<!--        </v-menu>-->
+<!--    </v-container>-->
+
+<!--    <div class="flex gap-x-2 p-2">-->
+
+<!--        <v-btn-->
+<!--            icon="mdi-paperclip mdi-rotate-225"-->
+<!--            variant="text"-->
+<!--            size="small">-->
+<!--        </v-btn>-->
+
+<!--        <v-textarea-->
+<!--            density="compact" auto-grow max-rows="5" rows="1" hide-details variant="plain">-->
+<!--        </v-textarea>-->
+<!--&lt;!&ndash;        <div class="w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input class="w-100 h-100 outline-0">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <v-btn-->
+<!--            icon="mdi-emoticon-happy-outline"-->
+<!--            variant="text"-->
+<!--            size="small">-->
+<!--        </v-btn>-->
+
+<!--        <v-btn-->
+<!--            icon="mdi-send"-->
+<!--            size="small"-->
+<!--            variant="text"-->
+<!--            color="primary">-->
+<!--        </v-btn>-->
+
+<!--        &lt;!&ndash;            <v-textarea&ndash;&gt;-->
+<!--        &lt;!&ndash;                class="bg-transparent"&ndash;&gt;-->
+<!--        &lt;!&ndash;                auto-grow&ndash;&gt;-->
+<!--        &lt;!&ndash;                autofocus&ndash;&gt;-->
+<!--        &lt;!&ndash;                rows="1"&ndash;&gt;-->
+<!--        &lt;!&ndash;                placeholder="Сообщение"&ndash;&gt;-->
+<!--        &lt;!&ndash;                type="textarea" variant="outlined">&ndash;&gt;-->
+<!--        &lt;!&ndash;            </v-textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;        <v-btn icon="bi-emoji-smile" variant="text" size="small" title="Еще"></v-btn>&ndash;&gt;-->
+<!--&lt;!&ndash;        <v-btn icon="bi-send" variant="text" size="small" title="Еще" color="primary"></v-btn>&ndash;&gt;-->
+<!--    </div>-->
 </template>
 
 <style scoped>
-.portrait.v-card {
-    margin: 0 auto;
-    max-width: 600px;
-    width: 100%;
-}
-
     .time {
         visibility: hidden;
         -webkit-user-select: none;

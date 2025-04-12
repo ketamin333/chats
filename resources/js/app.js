@@ -1,25 +1,19 @@
 import { createApp } from 'vue';
 import { vuetify } from './vuetify.js';
 import { router }  from './router.js';
+import store from './store';
 
-// // import AuthPanel from "./components/home/AuthPanel.vue";
-// // import FooterPanel from "./components/home/FooterPanel.vue";
-// // import RegisterContainer from "./components/Auth/RegisterContainer.vue";
-
-import navbar from '../views/components/Common/MenuNavbar.vue';
-import sidebar from '../views/components/Common/Sidebar.vue';
+import app from '../views/components/Common/App.vue';
 
 // Создаем экземпляр приложения Vue
-const app = createApp({
+const vue = createApp({
     components: {
-        navbar,
-        sidebar,
+        app,
     },
 });
 
 // Подключаем роутер к приложению
-app.use(router)
-    .use(vuetify);
+vue.use(router).use(vuetify).use(store);
 
 // Монтируем приложение
-app.mount('#chats');
+vue.mount('#chats');

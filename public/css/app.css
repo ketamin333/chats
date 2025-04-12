@@ -34,7 +34,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(var(--v-theme-on-surface), .25);
+    background: rgba(var(--v-theme-surface-light), 1);
     border-radius: 1rem;
 }
 
@@ -45,4 +45,12 @@
 
 .v-ripple__container {
     display:none !important;
+}
+
+.bg-guest {
+    background-image: url("https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279115.jpg?t=st=1740224012~exp=1740227612~hmac=2ede1d1aa60b0243db487fa4650d38071d768dbc69cb5d871d1958222d2f8137&w=1060") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background: rgb(var(--v-theme-primary));*/
+    /*background: linear-gradient(90deg, rgb(var(--v-theme-primary)) 0%, rgb(var(--v-theme-background)) 100%);*/
 }
